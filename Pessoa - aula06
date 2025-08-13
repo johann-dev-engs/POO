@@ -1,0 +1,42 @@
+package aula06;
+
+public class Pessoa {
+    protected String nome;
+    public Pessoa(String nome){
+        this.nome = nome;
+    }
+    public String getNome(){
+        return nome;
+    }
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+}
+class Aluno extends Pessoa{
+    public int matricula;
+
+    public String getNome(){
+        return nome;
+    }
+    public int getMatricula(){
+        return matricula;
+    }
+    public void setMatricula(int matricula){
+        this.matricula = matricula;
+
+    }
+    public Aluno(String nome, int matricula){
+        super(nome);
+        this.matricula = matricula;
+    }
+}
+
+class TesteAluno{
+    public static void main(String[] args){
+        Aluno a = new Aluno ("Johann Matheus ", 01);
+        Aluno b = new Aluno ("Raphael Henrique", 02);
+
+        System.out.println("O nome do aluno é: "+ a.getNome() + "e a sua matrícula é: " + a.getMatricula());
+        System.out.println("O nome do aluno é: "+ b.getNome() + "e a sua matrícula é: " + b.getMatricula());
+    }
+}
