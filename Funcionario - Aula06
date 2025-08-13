@@ -1,0 +1,53 @@
+package aula06;
+
+public class Funcionario {
+    private String nome;
+    private double salario;
+
+    public Funcionario(String nome, double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+    
+
+    public static void main(String[] args) {
+        Gerente gerente = new Gerente("Maria Silva", 7500.00, "Vendas");
+
+        System.out.println("Nome: " + gerente.getNome());
+        System.out.println("Salário: " + gerente.getSalario());
+        System.out.println("Setor: " + gerente.getSetor());
+    }
+}
+
+class Gerente extends Funcionario {
+    private String setor;
+
+    public Gerente(String nome, double salario, String setor) {
+        super(nome, salario);
+        this.setor = setor;
+    }
+
+    public String getSetor() {
+        return setor;
+    }
+
+    public void setSetor(String setor) {
+        this.setor = setor;
+    }
+}
