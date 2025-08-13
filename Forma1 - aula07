@@ -1,0 +1,54 @@
+package aula06;
+import java.util.ArrayList;
+import java.util.List;
+
+abstract class Forma1 {
+    public abstract double area(); 
+}
+
+
+class Retangulo extends Forma1 {
+    private double largura;
+    private double altura;
+
+    public Retangulo(double largura, double altura) {
+        this.largura = largura;
+        this.altura = altura;
+    }
+
+    @Override
+    public double area() {
+        return largura * altura;
+    }
+}
+
+class Circulo extends Forma1 {
+    private double raio;
+
+    public Circulo(double raio) {
+        this.raio = raio;
+    }
+
+    @Override
+    public double area() {
+        return Math.PI * raio * raio;
+    }
+}
+
+public class TesteForma1 {
+    public static void main(String[] args) {
+        List<Forma1> formas = new ArrayList<>();
+
+        formas.add(new Retangulo(3, 4));
+        formas.add(new Retangulo(5, 6));
+        formas.add(new Circulo(2));
+        formas.add(new Circulo(3));
+
+        double somaAreas = 0;
+        for (Forma1 f : formas) {
+            somaAreas += f.area();
+        }
+
+        System.out.println("Soma das áreas: " + somaAreas);
+    }
+}
