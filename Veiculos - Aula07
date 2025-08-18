@@ -1,0 +1,35 @@
+package aula07;
+
+class Veiculo{
+    public void mover(){
+        System.out.println("O Veículo está se movendo!");
+    }
+}
+
+class Carro extends Veiculo{
+    @Override
+    public void mover(){
+        System.out.println("O Carro está na estrada!");
+    }
+}
+class Bicicleta extends Veiculo{
+    @Override
+    public void mover(){
+        System.out.println("A Bicicleta está na ciclovia!");
+    }
+}
+
+public class TesteVeiculo {
+
+    public static void Iniciarmovimento(Veiculo v){
+        v.mover();
+    }
+
+    public static void main(String[] args) {
+        Veiculo carro = new Carro();
+        Veiculo bicicleta = new Bicicleta();
+
+        Iniciarmovimento(carro);
+        Iniciarmovimento(bicicleta);
+    }
+}
