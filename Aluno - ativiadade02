@@ -1,0 +1,46 @@
+package atividade02;
+
+public class Aluno {
+    protected String nome;
+    protected String matricula;
+    protected String curso;
+
+    public Aluno(String nome, String matricula, String curso){
+        this.nome = nome;
+        this.matricula = matricula;
+        this.curso = curso;
+    }
+    public String getNome(){
+        return nome;
+    }
+    public String getMatricula(){
+        return matricula;
+    }
+    public String getCurso(){
+        return curso;
+    }
+    public String toString(){
+        return "Nome: " + nome + "\n" +
+               "Matricula: " + matricula + "\n" +
+               "Curso: " + curso;
+    }
+}
+
+//Main em outr arquivo
+
+package atividade02;
+
+public class Main {
+     public static void main(String[] args){
+        Aluno aluno1 = new Aluno("Bernardo", "2024001", "Engenharia de Software"); 
+        Aluno aluno2 = new Aluno("Johann", "2024002", "Engenharia de Software"); 
+        Aluno aluno3 = new Aluno("Pedro", "2024003", "Engenharia de Software"); 
+
+        System.out.println(aluno1);
+        System.out.println(aluno2);
+        System.out.println(aluno3);
+    }
+}
+
+
+
