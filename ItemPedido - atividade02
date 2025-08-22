@@ -1,0 +1,71 @@
+package atividade02;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Pedido {
+    // Classe interna: ItemPedido só existe dentro de Pedido
+    private class ItemPedido {
+        private String produto;
+        private int quantidade;
+        private double precoUnitario;
+
+        public ItemPedido(String produto, int quantidade, double precoUnitario) {
+            this.produto = produto;
+            this.quantidade = quantidade;
+            this.precoUnitario = precoUnitario;
+        }
+
+        public double getTotal() {
+            return quantidade * precoUnitario;
+        }
+
+        public String getProduto() {
+            return produto;
+        }
+    }
+
+    private List<ItemPedido> itens = new ArrayList<>();
+
+    public void adicionarItem(String produto, int qtd, double preco) {
+        itens.add(new ItemPedido(produto, qtd, preco));
+    }
+
+    public void removerItem(String produto) {
+        itens.removeIf(item -> item.getProduto().equalsIgnoreCase(produto));
+    }
+
+    public double valorTotal() {
+        double total = 0;
+        for (ItemPedido item : itens) {
+            total += item.getTotal();
+        }
+        return total;
+    }
+   public void listarItens() {
+    for (ItemPedido item : itens) {
+        System.out.println(item.getProduto() + " - " 
+            + item.quantidade + " x R$ " + item.precoUnitario 
+            + " = R$ " + item.getTotal());
+        }
+    }
+
+}
+
+public class ItemPedido {
+    public static void main(String[] args) {
+        Pedido pedido = new Pedido();
+
+        pedido.adicionarItem("Camiseta", 2, 50.0);
+        pedido.adicionarItem("Calça", 1, 120.0);
+        pedido.adicionarItem("Tênis", 1, 250.0);
+
+        pedido.removerItem("Calça");
+
+        System.out.println("Itens do pedido:");
+        pedido.listarItens();
+        System.out.println("Valor total do pedido: R$ " + pedido.valorTotal());
+
+    }
+}
+
