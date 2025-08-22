@@ -1,0 +1,87 @@
+package atividade02;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Funcionario1 {
+    private String nome;
+    private double salario;
+    private Departamento departamento;
+
+    public Funcionario1(String nome, double salario, Departamento departamento){
+        this.nome = nome;
+        this.salario = salario;
+        this.departamento = departamento;
+    }
+    public String getNome(){
+        return nome;
+    }
+    public double getSalario(){
+        return salario;
+    }
+    public Departamento getDepartamento(){
+        return departamento;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario " +
+                nome + '\'' +
+                ", salario: " + salario +
+                ", departamento: " + departamento.getNome();
+    }
+}
+    class Departamento {
+        private String nome;
+        private List<Funcionario1> funcionarios;
+
+    public Departamento(String nome) {
+        this.nome = nome;
+        this.funcionarios = new ArrayList<>();
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void adicionarFuncionario(Funcionario1 f) {
+        funcionarios.add(f);
+    }
+
+    public void listarFuncionarios() {
+        System.out.println("Funcionários do departamento " + nome + ":");
+        for (Funcionario1 f : funcionarios) {
+            System.out.println(f);
+        }
+        System.out.println();
+    }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+}
+
+public class TesteFuncionario1 {
+    public static void main(String[] args) {
+        Departamento ti = new Departamento("TI");
+        Departamento rh = new Departamento("RH");
+
+        Funcionario1 f1 = new Funcionario1("Bernardo",5.000, ti );
+        Funcionario1 f2 = new Funcionario1("Johann", 6.000, ti);
+        Funcionario1 f3 = new Funcionario1("Amigo", 1.152, rh);
+
+        ti.adicionarFuncionario(f1);
+        ti.adicionarFuncionario(f2);
+        rh.adicionarFuncionario(f3);
+
+        ti.listarFuncionarios();
+        rh.listarFuncionarios();
+
+        System.out.println();
+
+        
+        
+    
+    }
+}
