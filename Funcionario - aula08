@@ -1,0 +1,56 @@
+package aula08;
+
+import java.util.ArrayList;
+import java.util.List;
+
+abstract class Funcionario {
+    protected String nome;
+    protected double salario;
+
+    Funcionario(String nome, double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+
+    public abstract double calcularBonus();
+
+    public void exibirDados(){
+        System.out.println("Nome: " + nome + " | Salario: " + salario);
+    }
+
+}
+class gerente extends Funcionario{
+        gerente(String nome, double salario){
+            super(nome, salario);
+        }
+        @Override
+        public double calcularBonus(){
+            return salario * 0.40;
+        }
+    }
+    class vendedor extends Funcionario{
+        vendedor(String nome, double salario){
+            super(nome, salario);
+            }
+            @Override
+            public double calcularBonus(){
+                return salario * 0.20;
+            }
+        }
+public class TesteFuncionario{
+    public static void main(String[] args){
+
+        List<Funcionario> funcionarios = new ArrayList<>();
+
+        Funcionario gerente = (new gerente("Bernardo",5000));
+        Funcionario vendedor = (new vendedor("Johann",3000));
+        
+        funcionarios.add(gerente);
+        funcionarios.add(vendedor);
+
+        for(Funcionario funcionario : funcionarios){
+            funcionario.exibirDados();
+            System.out.println("Bonus: " + funcionario.calcularBonus());
+        }
+    }
+}
