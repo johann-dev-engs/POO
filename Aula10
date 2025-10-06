@@ -1,0 +1,55 @@
+
+public class TesteAula10 {
+    public static void main(String[] args) {
+       
+        try {
+            int[] numeros = {10, 20, 30};
+            System.out.println(numeros[5]); 
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Erro: índice inválido no array!");
+        }
+
+        System.out.println("------------------------------------------------");
+
+        try {
+            cadastrarUsuario("Johann", 17);
+        } catch (IdadeInvalidaException e) {
+            System.out.println("Erro no cadastro: " + e.getMessage());
+        }
+
+        System.out.println("------------------------------------------------");
+
+        try {
+            int resultado = dividir(10, 0);
+            System.out.println("Resultado: " + resultado);
+        } catch (DivisaoPorZeroException e) {
+            System.out.println("Erro na divisão: " + e.getMessage());
+        }
+    }
+
+    public static void cadastrarUsuario(String nome, int idade) throws IdadeInvalidaException {
+        if (idade < 18) {
+            throw new IdadeInvalidaException("Usuário menor de 18 anos não pode ser cadastrado.");
+        }
+        System.out.println("Usuário " + nome + " cadastrado com sucesso!");
+    }
+
+    public static int dividir(int a, int b) throws DivisaoPorZeroException {
+        if (b == 0) {
+            throw new DivisaoPorZeroException("Divisão por zero não é permitida.");
+        }
+        return a / b;
+    }
+}
+
+class IdadeInvalidaException extends Exception {
+    public IdadeInvalidaException(String mensagem) {
+        super(mensagem);
+    }
+}
+
+class DivisaoPorZeroException extends Exception {
+    public DivisaoPorZeroException(String mensagem) {
+        super(mensagem);
+    }
+}
